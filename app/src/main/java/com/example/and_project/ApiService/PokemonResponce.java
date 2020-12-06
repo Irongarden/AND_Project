@@ -17,6 +17,11 @@ public class PokemonResponce {
 
     public class Sprites {
         private String front_default;
-
     }
+
+    public class Abilitis{
+        private String[] ability;
+    }
+
+
 }

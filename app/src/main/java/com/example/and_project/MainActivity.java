@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         mAuth = FirebaseAuth.getInstance();
-
+        Toast.makeText(this,"Hello " + mAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_LONG).show();
     }
 
     @Override

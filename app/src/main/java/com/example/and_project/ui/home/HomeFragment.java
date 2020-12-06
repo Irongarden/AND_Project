@@ -45,7 +45,9 @@ public class HomeFragment extends Fragment {
         searchButton.setOnClickListener(this::searchPok);
         homeViewModel.getPokemonFromApi("pikachu").observe(getViewLifecycleOwner(), pokemons -> {
             name = pokemons.pokemonName;
-            etName.setText(pokemons.getPokemonName());
+            //etName.setText(pokemons.getPokemonName());
+            tv.setText(pokemons.getPokemonName());
+            Glide.with(this).load(pokemons.getImageUrl()).into(imageView);
         });
         return root;
     }
@@ -57,8 +59,10 @@ public class HomeFragment extends Fragment {
         }
     }
     private void searchPok(View view) {
-        homeViewModel.getPokemonFromApi(etName.getText().toString());
-        tv.setText(name);
+        if(etName.getText().length() >3){
+            homeViewModel.getPokemonFromApi(etName.getText().toString());
+            tv.setText(name);
+        }
         //Glide.with(getViewLifecycleOwner()).load(homeViewModel.getPokemonFromApi().getValue().getImageUrl()).into(imageView);
         //Glide.with(view).load(homeViewModel.getPokemonFromApi(etName.getText().toString()).getValue().getImageUrl()).into(imageView);
     }
