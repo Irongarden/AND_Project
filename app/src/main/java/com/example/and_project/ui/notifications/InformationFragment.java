@@ -41,7 +41,7 @@ public class InformationFragment extends Fragment {
 
     private void onclick(View view) {
         Uri uri = Uri.parse("https://pokemon.fandom.com/wiki/Pok%C3%A9mon_Wiki");
-        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 }

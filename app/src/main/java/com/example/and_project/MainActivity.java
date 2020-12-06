@@ -27,26 +27,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-       // toolbar = findViewById(R.id.toolbar);
-
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-        mAuth =FirebaseAuth.getInstance();
-        //Toast.makeText(this,"hello " + mAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_LONG).show();
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.topbar,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.topbar, menu);
         return true;
     }
 
@@ -55,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginView() {
-        startActivity(new Intent(this,LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 }

@@ -27,16 +27,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("Resultcode", " code: "+resultCode);
-        if(resultCode == RESULT_OK && requestCode == RC_SIGN_IN){
+        Log.i("Resultcode", " code: " + resultCode);
+        if (resultCode == RESULT_OK && requestCode == RC_SIGN_IN) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
-        }else{
+        } else {
             Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
         }
 
     }
-
 
     public void signIn(View view) {
 

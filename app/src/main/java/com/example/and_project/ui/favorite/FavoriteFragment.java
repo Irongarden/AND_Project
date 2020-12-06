@@ -23,8 +23,6 @@ import com.example.and_project.R;
 
 public class FavoriteFragment extends Fragment {
 
-
-
     private FavoriteViewModel favoriteViewModel;
     RecyclerView favoritesList;
     Button deleteAllButton;
@@ -39,16 +37,10 @@ public class FavoriteFragment extends Fragment {
         favoritesList = root.findViewById(R.id.favoriteRecycler);
         deleteAllButton = root.findViewById(R.id.deleteButton);
         deleteAllButton.setOnClickListener(this::onClickDelete);
-
         favoritesList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //favoritesList.hasFixedSize();
-
         pokemonAdapter = new PokemonAdapter();
         favoritesList.setAdapter(pokemonAdapter);
-
-        
-
-        favoriteViewModel.getAllPokemons().observe(getViewLifecycleOwner(),pokemons -> {
+        favoriteViewModel.getAllPokemons().observe(getViewLifecycleOwner(), pokemons -> {
             pokemonAdapter.setPokemons(pokemons);
         });
         favoriteViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -62,6 +54,6 @@ public class FavoriteFragment extends Fragment {
 
     private void onClickDelete(View view) {
         favoriteViewModel.deleteAllPokemons();
-        Toast.makeText(getContext(),"All pokemon deleted",Toast.LENGTH_LONG);
+        Toast.makeText(getContext(), "All pokemon deleted", Toast.LENGTH_LONG);
     }
 }

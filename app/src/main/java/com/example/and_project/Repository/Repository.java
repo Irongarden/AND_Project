@@ -28,7 +28,6 @@ public class Repository {
     private final MutableLiveData<Pokemon> pokemon;
     private final MutableLiveData<Pokemon> pokemonsFromAPi;
     private String prev;
-    private MutableLiveData<Pokemon> pokemon1;
 
     private Repository(Application application) {
         pokemonDao = PokemonDB.getInstance(application).pokemonDao();
@@ -63,13 +62,8 @@ public class Repository {
         });
     }
 
-    public LiveData<Pokemon> getPokemonFromApi() {
-        return pokemon;
-    }
-
     public LiveData<Pokemon> getPokemonFromAPi(String name) {
         PokemonApi pokemonApi = ServiceGenerator.getPokemonApi();
-        //Call<PokemonResponce> call = pokemonApi.getPokemons();
         if (name == prev) {
             System.out.println("prev called");
             return pokemonsFromAPi;
@@ -80,9 +74,7 @@ public class Repository {
             public void onResponse(Call<PokemonResponce> call, Response<PokemonResponce> response) {
                 if (response.code() == 200) {
                     pokemonsFromAPi.setValue(response.body().getPokemon());
-                    //Log.i("Repository",response.body().getPokemons().get(0).pokemonName);
                     Log.i("Repository", response.body().getPokemon().pokemonName);
-
                     prev = name;
                 }
             }
@@ -116,6 +108,4 @@ public class Repository {
             }
         });
     }
-
-
 }
